@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'm3u_parser.dart';
 
 class ChannelProvider extends ChangeNotifier {
-  List<Map<String, String>> _channelList = [];
+  final List<Map<String, String>> _channelList = [];
 
   List<Map<String, String>> get channelList => _channelList;
 

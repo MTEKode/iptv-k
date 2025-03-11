@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:winpair/view/components/custom_video_player.dart';
 import 'package:winpair/view/home_screen.dart';
+import 'package:winpair/core/lib/channel_provider.dart';
 
-import 'core/lib/channel_provider.dart';
-
-void main() {
+void main() async { //Make main async
+  WidgetsFlutterBinding.ensureInitialized(); //Add this line.
+  final channelProvider = ChannelProvider();
+  await channelProvider.loadChannels('./assets/data/tv_channels_toribio_plus.m3u'); //Replace with your file path.
   runApp(ChangeNotifierProvider(
-    create: (_) => ChannelProvider(),
-    child: MyApp(),
-  ),);
+    create: (_) => channelProvider,
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -17,11 +18,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: const Text('Video Player Example')),
-        body: const Center(
-          child: HomeScreen()
+        body: Center(
+          child: HomeScreen(),
         ),
       ),
     );

@@ -20,7 +20,7 @@ class ChannelsList extends StatelessWidget {
           itemBuilder: (context, index) {
             return ListTile(
               title: Text(
-                channelGroups[index],
+                'Group Name',
                 style: const TextStyle(color: Colors.white),
               ),
               // onTap: () => onGroupSelected(channelGroups[index]),

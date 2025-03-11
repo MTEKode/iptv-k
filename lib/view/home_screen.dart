@@ -4,7 +4,7 @@ import 'package:winpair/view/components/channels_list.dart';
 import 'package:winpair/view/components/channels_list_home.dart';
 import 'package:winpair/view/components/custom_video_player.dart';
 
-import '../core/lib/channel_provider.dart';
+import 'package:winpair/core/lib/channel_provider.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -21,6 +21,8 @@ class _HomeScreen extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final channelGroups = Provider.of<ChannelProvider>(context).channelGroups;
+
+    print('Channel Groups: $channelGroups');
 
     return Scaffold(
       backgroundColor: Colors.deepPurple,
@@ -53,8 +55,8 @@ class _HomeScreen extends State<HomeScreen> {
       body: SafeArea(
         bottom: false,
         child: <Widget>[
-          ChannelsListHome(),
           ChannelsList(channelGroups: channelGroups),
+          ChannelsListHome(),
           CustomVideoPlayer(
             videoUrl: 'http://titled36322.cdngold.me:80/toribio/7121b8a559/855889',
           )
